@@ -6,7 +6,7 @@ This implmentation is layered on top of Prometheus. Some pre-flight steps are re
 
 ```
 docker exec -it PROMETHEUS bash
-yum install cronie
+yum install cronie jq bc
 /usr/sbin/crond start
 ```
 Now create a file called weather_exporter at the root of PROMETHEUS node.
