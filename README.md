@@ -5,6 +5,7 @@ Part of the 'On Rocky' series. This is a simple implmentation of Openweather in 
 This implmentation is layered on top of Prometheus. Some pre-flight steps are required. 
 
 ```
+docker exec -it PROMETHEUS bash
 yum install cronie
 /usr/sbin/crond start
 ```
