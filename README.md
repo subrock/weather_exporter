@@ -12,11 +12,9 @@ yum install cronie jq bc
 Now create a file called weather_exporter at the root of PROMETHEUS node.
 ```
 #!/bin/sh
-crl=`curl -s "https://api.openweathermap.org/data/2.5/weather?q=$1&appid=<Your Key>&units=metric" | jq '.main.temp'`
-temp=$(echo "scale=2;((9/5) * $crl) + 32" |bc)
-city=$(echo $1 | sed 's/ /\\ /g')
-curl -XPOST http://INFLUXDB:8086/write?db=qe1 --data-binary "weather,city=$city temperature=$temp $2"
-echo $temp
+crl=`curl -s "https://api.openweathermap.org/data/2.5/weather?q=$1&appid=<API KEY>&units=imperial" | jq '.main.temp'`
+curl -XPOST http://INFLUXDB:8086/write?db=qe1 --data-binary "weather,city=$1 temperature=$crl $2"
+echo $crl
 ```
 Finally add weather_exporter to a scheduler like crontabs. Type crontab -e and enter.
 ```
