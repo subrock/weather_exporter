@@ -23,6 +23,8 @@ Finally add weather_exporter to a scheduler like crontabs. Type crontab -e and e
 */1 * * * * /weather_exporter Tukwila
 ```
 ## Grafana Dashboard
+![alt text](http://url/to/img.png)
+
 To enable a Grafana Dashboard for weather_exporter we need to add the datasource. In Grafana, Connections --> Add a new connection. Search for InfluxDB. Give the datasource a unique name. Enter http://INFLUXDB:8086 for url. Http method is GET. Click Save and Test.
 
 Import the following dashboard as an example. 
