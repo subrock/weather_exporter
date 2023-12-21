@@ -1,4 +1,4 @@
 #!/bin/sh
-crl=`curl -s "https://api.openweathermap.org/data/2.5/weather?q=$1&appid=9c00858d64ac723c0a3e6fa48b66663b&units=imperial" | jq '.main.temp'`
+crl=`curl -s "https://api.openweathermap.org/data/2.5/weather?q=$1&appid=<API KEY>&units=imperial" | jq '.main.temp'`
 curl -XPOST http://INFLUXDB:8086/write?db=qe1 --data-binary "weather,city=$1 temperature=$crl $2"
 echo $crl
